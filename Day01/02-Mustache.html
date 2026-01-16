@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Vue Program</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 编写用来渲染的代码逻辑 -->
+        <!-- 插值表达式的语法 {{表达式}} -->
+        <p>{{ nickname }}</p>
+        <p>{{ nickname.toUpperCase() }}</p>
+        <p>{{ nickname + " " + "II" }}</p>
+        <p>{{ true ? 10 : 9 }}</p>
+        <p>{{ friend.name }}</p>
+    </div>
+
+    <!-- 引入开发版本包，包含完整注释和警告 -->
+    <script src="../lib/vue.js"></script>
+    <script>
+        const app = new Vue({
+            // 通过el配置选择器
+            el: '#app',
+            data: {
+                nickname: 'Tom',
+                friend: {
+                    name: 'Jerry'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Vue Program</title>
+</head>
+<body>
+    <div id="app">
+        <div v-html="msg">link1</div>
+    </div>
+
+    <!-- v-show切换 css 中的 display:none 来控制隐藏 -->
+    <!-- v-if 根据判断条件控制元素的创建和移除 -->
+    <div id="app1">
+        <div v-show="flag" class="box">v-show控制的盒子</div>
+        <div v-if="flag" class="box">v-if控制的盒子</div>
+    </div>
+
+    <div id="app2">
+        <p v-if="gender === 'male'">性别: 男</p>
+        <p v-else>性别: 女</p>
+        <hr>
+        <p v-if="score >= 90">成绩评定A</p>
+        <p v-else-if="score >= 70">成绩评定B</p>
+        <p v-else-if="score >= 60">成绩评定C</p>
+        <p v-else>成绩评定D</p>
+    </div>
+
+    <style>
+        .box {
+          border: 3px solid #000000;
+          border-radius: 10px;
+          padding: 20px;
+          margin: 20px;
+          width: 200px;
+        }
+        h3 {
+          margin: 10px 0 20px 0;
+        }
+        p {
+          margin: 20px;
+        }
+      </style>
+
+    <div id="app3">
+        <button v-on:click="count--">-</button>
+        <p>{{count}}</p>
+        <button v-on:click="count++">+</button>
+        <br>
+        <button v-on:mouseenter="count--">-</button>
+        <p>{{count}}</p>
+        <button v-on:mouseenter="count++">+</button>
+        <br>
+        <button @click="count--">-</button>
+        <p>{{count}}</p>
+        <button @click="count++">+</button>
+        <button @click="fn">切换显示隐藏</button>
+        <h1 v-show="isShow">百度</h1>
+        <div class="box">
+            <h3>小黑自动售货机</h3>
+            <button @click="sale(5)">可乐5元</button>
+            <button @click="sale(10)">咖啡10元</button>
+            <button @click="sale(8)">牛奶8元</button>
+          </div>
+        <p>银行卡余额：{{ money }}元</p>
+    </div>
+
+    <div id="app4">
+        <img v-bind:src="imgUrl" v-bind:alt="altMeg">
+        <img :src="imgUrl" :alt="altMeg">
+    </div>
+
+    <div id="app5">
+        <p v-for="(fruit, index) in list">{{fruit}} - {{index}}</p>
+        <p v-for="(fruit, index) in list">{{list[index]}}</p>
+    </div>
+
+    <div id="app6">
+        账户：<input type="text" v-model="username"> <br><br>
+        密码：<input type="password" v-model="password"> <br><br>
+        <button>登录</button>
+        <button>重置</button>
+    </div>
+
+    <!-- 引入开发版本包，包含完整注释和警告 -->
+    <script src="../lib/vue.js"></script>
+    <script>
+        const app = new Vue({
+            // 通过el配置选择器
+            el: '#app',
+            data: {
+                msg: `
+            <a href="http://www.baidu.com">百度</a>
+            `
+            }
+        })
+        const app1 = new Vue({
+            el: '#app1',
+            data: {
+                flag: false
+            }
+        })
+        const app2 = new Vue({
+            el: '#app2',
+            data: {
+                gender: 'male',
+                score: 80
+            }
+        })
+        const app3 = new Vue({
+            el: '#app3',
+            data: {
+                count: 100,
+                isShow: true,
+                money: 999
+            },
+            methods: {
+                fn(){
+                    this.isShow = !this.isShow
+                },
+                sale(money){
+                    this.money -= money;
+                }
+            }
+        })
+        const app4 = new Vue({
+            el: '#app4',
+            data: {
+                imgUrl: './imgs/10-01.png',
+                altMeg: '10-01'
+            }
+        })
+        const app5 = new Vue({
+            el: '#app5',
+            data: {
+                list:['苹果','西瓜','葡萄']
+            }
+        })
+        const app6 = new Vue({
+            el: '#app6',
+            data: {
+                username: '',
+                password: ''
+            },
+        })
+    </script>
+</body>
+</html>

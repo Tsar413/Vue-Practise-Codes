@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>New Vue Program</title>
+</head>
+
+<body>
+    <style>
+        table {
+            border: 1px solid #000;
+            text-align: center;
+            width: 240px;
+        }
+
+        th,
+        td {
+            border: 1px solid #000;
+        }
+
+        h3 {
+            position: relative;
+        }
+    </style>
+
+    <div id="app">
+        <h3>小黑的礼物清单</h3>
+        <table>
+            <tr>
+                <th>名字</th>
+                <th>数量</th>
+            </tr>
+            <tr v-for="(item, index) in list" :key="item.id">
+                <td>{{ item.name }}</td>
+                <td>{{ item.num }}个</td>
+            </tr>
+        </table>
+
+        <!-- 目标：统计求和，求得礼物总数 -->
+        <p>礼物总数：{{ totalCount }} 个</p>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                // 现有的数据
+                list: [
+                    { id: 1, name: '篮球', num: 1 },
+                    { id: 2, name: '玩具', num: 2 },
+                    { id: 3, name: '铅笔', num: 5 },
+                ]
+            },
+            computed: {
+                totalCount(){
+                    // 基于现有数据编写求值逻辑
+                    // 计算属性函数内部，可以直接通过 this 访问到 app 实例
+
+                    // 对 this.list 中的 num 求和
+                    // arr.reduce(function(accumulator, currentValue, currentIndex, array), initialValue)
+                    //  accumulator（累加器）：累积回调的返回值；它是上一次调用回调时返回的累积值。
+                    // currentValue（当前值）：数组中正在处理的元素。
+                    // currentIndex（当前索引）：数组中正在处理的元素的索引。如果提供了 initialValue，则索引为0，否则索引为1。
+                    // array（数组）：调用 reduce() 的数组。
+                    // initialValue（初始值）：作为第一次调用 callback 函数时的第一个参数的值。如果没有提供初始值，则将使用数组中的第一个元素。在没有初始值的空数组上调用 reduce 将报错。
+                    var total = this.list.reduce((sum, item) => sum + item.num, 0);
+                    return total
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

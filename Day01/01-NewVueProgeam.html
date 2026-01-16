@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Vue Program</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 编写用来渲染的代码逻辑 -->
+        {{ msg }}
+        {{ count }}
+    </div>
+
+    <!-- 引入开发版本包，包含完整注释和警告 -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> -->
+    <script src="../lib/vue.js"></script>
+    <script>
+        const app = new Vue({
+            // 通过el配置选择器
+            el: '#app',
+            data: {
+                msg: "Hello Vue2",
+                count: 1234
+            }
+        })
+    </script>
+</body>
+</html>

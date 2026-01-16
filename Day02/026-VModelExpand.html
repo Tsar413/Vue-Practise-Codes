@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>New Vue Program</title>
+</head>
+
+<body>
+    <style>
+        textarea {
+            display: block;
+            width: 240px;
+            height: 100px;
+            margin: 10px 0;
+        }
+    </style>
+    <div id="app">
+        <h3>小黑学习网</h3>
+        姓名：
+        <input type="text" v-model="name">
+        <br><br>
+        是否单身：
+        <input type="checkbox" v-model="isSingle">
+        <br><br>
+        <!-- 
+          前置理解：
+            1. name:  给单选框加上 name 属性 可以分组 → 同一组互相会互斥
+            2. value: 给单选框加上 value 属性，用于提交给后台的数据
+          结合 Vue 使用 → v-model
+        -->
+        性别:
+        <input type="radio" name="gender" value="male" v-model="gender">男
+        <input type="radio" name="gender" value="female" v-model="gender">女
+        <br><br>
+        <!-- 
+          前置理解：
+            1. option 需要设置 value 值，提交给后台
+            2. select 的 value 值，关联了选中的 option 的 value 值
+          结合 Vue 使用 → v-model
+        -->
+        所在城市:
+        <select v-model="city">
+            <option value="Peking">北京</option>
+            <option value="Shanghai">上海</option>
+            <option value="Chengtu">成都</option>
+            <option value="Nanking">南京</option>
+        </select>
+        <br><br>
+        自我描述：
+        <textarea v-model="intro"></textarea>
+        <button>立即注册</button>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                name: '',
+                isSingle: false,
+                gender: '',
+                city: 'Peking',
+                intro: ''
+            }
+        })
+    </script>
+</body>
+
+</html>

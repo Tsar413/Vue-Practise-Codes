@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>New Vue Program</title>
+</head>
+
+<body>
+    <div id="app">
+        姓：<input type="text" v-model="firstName"> +
+        名：<input type="text" v-model="lastName"> =
+        <span>{{ fullName }}</span><br><br>
+        <button @click="changeName()">改名卡</button>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                firstName: '刘',
+                lastName: '备'
+            },
+            computed: {
+                // fullName(){
+                //     return this.firstName + this.lastName
+                // }
+                // 完整写法 获取+设置
+                fullName: {
+                    get(){
+                        return this.firstName + this.lastName
+                    },
+                    // 当fullName计算属性被修改复制 执行set
+                    set(value){
+                        this.firstName = value.substring(0, 1)
+                        this.lastName = value.substring(1)
+                    }
+                }
+            },
+            methods: {
+                changeName(){
+                    this.fullName = '李四'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
