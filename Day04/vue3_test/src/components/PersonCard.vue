@@ -17,21 +17,23 @@ export default {
 </script> -->
 
 <script setup lang="ts" defineOptions="PersonCard">
-let name = '李四' // 注意此时的name不是响应式的
-let age = '18' // 注意此时的age不是响应式的
-let tel = '12345678910' // 注意此时的tel不是响应式的
+    import { ref } from 'vue'
+    let name = ref('李四') 
+    let age = ref('18') 
+    let tel = ref('12345678910') 
+    let address = 'abc' // 注意此时的address不是响应式的
 
-function changeName() {
-    name = '张三'
-}
+    function changeName() {
+        name.value = '张三' // JS中操作ref对象时候需要.value
+    }
 
-function changeAge() {
-    age = '24'
-}
+    function changeAge() {
+        age.value = '24'
+    }
 
-function changeTel() {
-    tel = '1145141919810'
-}
+    function changeTel() {
+        tel.value = '1145141919810'
+    }
 </script>
 
 <style scoped>
