@@ -3,7 +3,8 @@
     <!-- <watchEffectLearning />
     <TagRef /> -->
     <!-- <TypeScriptsReview /> -->
-    <PropsLearning :list="personList" />                                                                                             
+    <PropsLearning :list="personList" />  
+    <HooksLearning />
   </div>
 </template>
 
@@ -12,6 +13,7 @@
   import TagRef from './components/TagRef.vue';
   import TypeScriptsReview from './components/TypeScriptsReview.vue';
   import PropsLearning from './components/PropsLearning.vue';
+  import HooksLearning from './components/HooksLearning.vue';
   import { reactive } from 'vue';
   import { type Persons } from '@/types'
 
