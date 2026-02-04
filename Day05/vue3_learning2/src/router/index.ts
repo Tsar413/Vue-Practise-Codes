@@ -30,7 +30,13 @@ const router = createRouter({
                 {
                     name: 'detail-page',
                     path: 'detail/:id/:title/:content',
-                    component:Detail
+                    component:Detail,
+                    // props的布尔值写法，作用：把收到了每一组params参数，作为props传给Detail组件
+                    // props: true
+                    // props的函数写法，作用：把返回的对象中每一组key-value作为props传给Detail组件
+                    props(route){
+                        return route.query
+                    }
                 }
             ]
         },
