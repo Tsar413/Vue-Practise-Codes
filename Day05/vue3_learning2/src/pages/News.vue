@@ -3,10 +3,22 @@
     <!-- 导航区 -->
     <ul>
       <li v-for="(item, index) in newsList" :key="item.id">
-        <RouterLink 
+        <!-- <RouterLink 
           :to="{
             path: '/news/detail',
             query:{
+              id: item.id,
+              title: item.title,
+              content: item.content
+            }
+          }"
+        >
+        {{ item.title }}
+        </RouterLink> -->
+        <RouterLink 
+          :to="{
+            name: 'detail-page',
+            params:{
               id: item.id,
               title: item.title,
               content: item.content
