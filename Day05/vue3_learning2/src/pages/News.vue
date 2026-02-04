@@ -3,7 +3,18 @@
     <!-- 导航区 -->
     <ul>
       <li v-for="(item, index) in newsList" :key="item.id">
-        <RouterLink :to="{path: '/news/detail'}">{{ item.title }}</RouterLink>
+        <RouterLink 
+          :to="{
+            path: '/news/detail',
+            query:{
+              id: item.id,
+              title: item.title,
+              content: item.content
+            }
+          }"
+        >
+        {{ item.title }}
+        </RouterLink>
       </li>
     </ul>
     <!-- 展示区 -->
