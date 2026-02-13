@@ -1,8 +1,8 @@
 <template>
   <div class="count">
-    <h2>当前求和为：{{ countStore.sum }}</h2>
-    <h3>{{ countStore.address }}</h3>
-    <h3>{{ countStore.school }}</h3>
+    <h2>当前求和为：{{ bigSum }}</h2>
+    <h3>{{ address }}</h3>
+    <h3>{{ school }}</h3>
     <select v-model.number="n">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -16,9 +16,14 @@
 <script setup lang="ts" name="Count">
   import { ref } from "vue";
   import { useCountStore } from '@/store/count'
+  /* 引入storeToRefs */
+  import { storeToRefs } from 'pinia'
   // 数据 
 
   const countStore = useCountStore()
+
+  /* 使用storeToRefs转换countStore，随后解构 */
+  const { sum,address,school,bigSum } = storeToRefs(countStore)
 
   let n = ref(1) // 用户选择的数字
 
@@ -34,7 +39,7 @@
     // 第三种修改方法
     countStore.increment(n.value)
   }
-  
+
   function minus(){
     // 第三种修改方法
     countStore.decrement(n.value)

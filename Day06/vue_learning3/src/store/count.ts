@@ -19,5 +19,11 @@ export const useCountStore = defineStore('count',{
         decrement(value:number){
             this.sum -= value
         }
+    }, 
+    getters: {
+        bigSum:(state):number => state.sum * 10,
+        upperSchool():string{
+            return this.school.toUpperCase()
+        }
     }
 })
