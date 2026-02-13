@@ -1,6 +1,8 @@
 <template>
   <div class="count">
     <h2>当前求和为：{{ countStore.sum }}</h2>
+    <h3>{{ countStore.address }}</h3>
+    <h3>{{ countStore.school }}</h3>
     <select v-model.number="n">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -22,10 +24,20 @@
 
   // 方法
   function add(){
-
+    // 第一种修改方式，直接修改
+    countStore.sum += n.value
+    // 第二种修改方式，批量修改
+    countStore.$patch({
+      school: 'aaaa',
+      address: 'aef'
+    })
+    // 第三种修改方法
+    countStore.increment(n.value)
   }
+  
   function minus(){
-
+    // 第三种修改方法
+    countStore.decrement(n.value)
   }
 </script>
 
