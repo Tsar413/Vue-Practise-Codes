@@ -2,12 +2,18 @@
   <div class="father">
     <h3>父组件</h3>
 
-    <Child />
+    <Child @haha="xyz"/>
   </div>
 </template>
 
 <script setup lang="ts" name="Father">
     import Child from './Child.vue'
+	import { ref } from 'vue';
+
+	function xyz(value:number){
+		console.log("xyz", value)
+	}
+
 
 </script>
 

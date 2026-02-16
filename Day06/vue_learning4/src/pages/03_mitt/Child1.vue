@@ -1,12 +1,16 @@
 <template>
   <div class="child1">
     <h3>子组件1</h3>
-
+	<h4>{{ toy }}</h4>
+	<button @click="emitter.emit('send-toy', toy)">玩具给弟弟</button>
   </div>
 </template>
 
 <script setup lang="ts" name="Child1">
+import { ref } from 'vue';
+import emitter from '@/utils/emitter';
 
+	let toy = ref('car')
 </script>
 
 <style scoped>
